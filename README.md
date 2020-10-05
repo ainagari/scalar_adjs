@@ -1,4 +1,4 @@
-# scalar_adjs
+# 🌴 scalar_adjs
 
 Coming soon: code for the paper
 
