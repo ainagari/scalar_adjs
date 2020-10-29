@@ -21,34 +21,30 @@ For the code used for this evaluation, please contact us.
 
 ### Code
 
-#### Extracting representations
-Contextualized representations for the sentences can be generated with:
+#### Extracting BERT Representations
+Contextualized representations for (ukwac, ukwac-random, flickr) sentences can be generated with the following command. They will be stored in `data/`. 
 
 `python extract_representations --sentences ukwac`
 
-(alternatively: ukwac-random, flickr). They will be stored in `data/`.
+#### Making Ranking Predictions
 
-#### Making ranking predictions
-
-Once representations are extracted, predictions can be generated with:
+This is the command to generate predictions once representations have been extracted. By default they are made with `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
 
 `python predict.py`
 
-By default they will be written to a new `predictions/` directory, using ukwac sentences, and all methods of the paper will be run (baselines, diffvec-1 (+)...).
-See the options available in the script for more details, and the specifities of FREQ and static methods below:
-
 ##### FREQ predictions
 
-To generate the frequency baseline (FREQ) predictions, you should have a file with frequencies and indicate its location with --freq_file. 
+To generate frequency baseline (FREQ) predictions, you should have a file with frequencies and indicate its location with the flag `--freq_file`. 
 It should be a zipped text file with this format:
 `word[TAB]frequency\n`
 
 ##### Static word embedding predictions
 
-To generate predictions made by static embeddings, the file "GoogleNews-vectors-negative300.magnitude" (which can be found [here](https://github.com/plasticityai/magnitude)) should be in the `data/` directory. You will also need to install the magnitude library (see the link).
+To generate predictions made by static embeddings, the file `GoogleNews-vectors-negative300.magnitude` (which can be downloaded [here](https://github.com/plasticityai/magnitude)) should be in the `data/` directory. You will also need to install the magnitude library (see the link provided).
 
+#### Evaluating Adjective Ranking
 
-#### Evaluating adjectives ranking
+Once predictions are saved you can evaluate them with the `eval.py` script. By default results will be written to a new folder `results/`.
 
 `python eval.py`
 
@@ -64,14 +60,14 @@ This uses the file `QA_instances_representations.pkl`, which already contains th
 
 #### Obtaining sentences from ukwac
 
-`extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository.
+`extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository but you can contact me
 
 
 
 ### Citation
 
 If you use the code in this repository, please cite our paper:
-`
+```
 @inproceedings{gari2020puntacana,
     author    = {Gar\'i Soler, Aina and Apidianaki, Marianna},
     title     = {{BERT Knows Punta Cana is not just \textit{beautiful}, it's \textit{gorgeous}: Ranking Scalar Adjectives with Contextualised Representations}},
@@ -80,6 +76,7 @@ If you use the code in this repository, please cite our paper:
     month     = {nov},
     url       = {https://arxiv.org/abs/2010.02686}
 }
+```
 `   
 
 ### References
