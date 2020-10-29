@@ -1,4 +1,4 @@
-# 🌴 scalar_adjs
+# 🌴 BERT Knows Punta Cana is not just beautiful, it's gorgeous: Ranking Scalar Adjectives with Contextualised Representations 🌴
 
 Code for the paper:
 
@@ -13,7 +13,11 @@ The `data` folder contains:
 
 + The scales in the Demelo, Crowd and Wilkinson datasets.
 
-+ `\*\_selected_scalar_sentences.pkl` files are pickled Python objects containing the 10 sentences used for each adjective scale. Each file corresponds to a different sentence pool (ukwac, ukwac-random, flickr).
++ `*\_selected_scalar_sentences.pkl` files are pickled Python objects containing the 10 sentences used for each adjective scale. Each file corresponds to a different sentence pool (ukwac, ukwac-random, flickr).
+
+
++ `QA_instances_representations.pkl` files are pickled Python objects containing `bert-base-uncased` representations for the adjectives in the indirect QA dataset. The original dataset can be found [here](https://raw.githubusercontent.com/cgpotts/iqap/master/ACL2010/indirect-answers.combined.imdb-predictions.csv).
+
 
 + `coinco_data_500.pkl` is the dataset used for the evaluation described in the Supplementary Material. It contains 500 sentence pairs extracted from the CoInCo corpus, where lexical substitutes are proposed for all content words.
 The sentence pairs share a word and a set of possible substitutes along with the number of annotators who proposed the substitute. The variance ratio of these frequencies is taken to be an indication of whether all substitutes fit in the sentence equally well or not. If it is high, one substitute might be much more appropriate than the others. The task was to determine, for each sentence pair, which sentence is a better fit for ALL substitutes in the set.
@@ -55,13 +59,10 @@ Predictions on the QA task can be generated with:
 
 `python qa_predict.py`
 
-This uses the file `QA_instances_representations.pkl`, which already contains the `bert-base-uncased` representations needed for this task. 
-
 
 #### Obtaining sentences from ukwac
 
 `extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository but you can contact me
-
 
 
 ### Citation
