@@ -6,7 +6,6 @@ Read the QA file, extract the info so I can get the representations
 
 import pandas as pd
 from nltk import word_tokenize
-import pdb
 import pickle
 
 
@@ -53,7 +52,6 @@ for i, r in kept.iterrows():
 	elif "/" in adjB:
 		position2 = [answer.index(adjB.split("/")[0])]
 	elif len(adjB.split()) > 1:
-		#pdb.set_trace()
 		position2 = []
 		for w in adjB.split():
 			position2.append(answer.index(w))

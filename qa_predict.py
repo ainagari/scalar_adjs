@@ -101,7 +101,7 @@ def adapt_adjectives_for_frequency(adj):
 
 if __name__ == "__main__":
     methods = ['freq', 'wordnet', 'diffvec', 'staticdiffvec', 'diffvec1scale', 'staticdiffvec1scale']
-    qa_data = pickle.load(open("QA_instances_representations.pkl", "rb"))
+    qa_data = pickle.load(open("data/QA_instances_representations.pkl", "rb"))
     datanames = ['demelo','crowd','wilkinson']
     sentence_type = "ukwac"
     print("loaded qa data")
