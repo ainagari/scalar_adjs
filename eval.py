@@ -343,7 +343,7 @@ if __name__ == "__main__":
 
             if "bertdist" not in method: #freq, wordnet, and all diffvec methods
                 results[dataname][sentence_type][method]['pairwise_accuracy'], results_by_scale[dataname][sentence_type][method]['pairwise_accuracy'] = pairwise_accuracy(pred_rankings,gold_rankings)
-                results[dataname][sentence_type][method]["kendalls_tau"], results_by_scale[dataname][sentence_type][method]['kendalls_tau'] = kendalls_tau(pred_rankings, gold_rankings, abs=False)
+                results[dataname][sentence_type][method]["kendalls_tau"], results_by_scale[dataname][sentence_type][method]['kendalls_tau'] = kendalls_tau(pred_rankings, gold_rankings)
                 results[dataname][sentence_type][method]["spearmans_rho_avg"], results_by_scale[dataname][sentence_type][method]['spearmans_rho_avg'] = spearmans_rho_avg(pred_rankings, gold_rankings)
 
                 ## Coverage
