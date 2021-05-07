@@ -4,7 +4,7 @@ Code for the papers:
 
 Aina Garí Soler and Marianna Apidianaki (2020). [BERT Knows Punta Cana is not just beautiful, it's gorgeous: Ranking Scalar Adjectives with Contextualised Representations](https://www.aclweb.org/anthology/2020.emnlp-main.598.pdf). In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), Nov 16-20.
 
-**code coming soon** Aina Garí Soler and Marianna Apidianaki (2021). [Scalar Adjective Identification and Multilingual Ranking](https://arxiv.org/abs/2105.01180). In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
+**(data ready, code coming soon)** Aina Garí Soler and Marianna Apidianaki (2021). [Scalar Adjective Identification and Multilingual Ranking](https://arxiv.org/abs/2105.01180). In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
 
 
 Part of this code and data were obtained or adapted from [this repository](https://github.com/acocos/scalar-adj/). (Cocos et al., 2018).
