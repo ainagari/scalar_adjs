@@ -4,7 +4,7 @@ Code for the papers:
 
 Aina Garí Soler and Marianna Apidianaki (2020). [BERT Knows Punta Cana is not just beautiful, it's gorgeous: Ranking Scalar Adjectives with Contextualised Representations](https://www.aclweb.org/anthology/2020.emnlp-main.598.pdf). In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), Nov 16-20.
 
-**coming soon** Aina Garí Soler and Marianna Apidianaki (2021). Scalar Adjective Identification and Multilingual Ranking. In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
+**code coming soon** Aina Garí Soler and Marianna Apidianaki (2021). [Scalar Adjective Identification and Multilingual Ranking](https://arxiv.org/abs/2105.01180). In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
 
 
 Part of this code and data were obtained or adapted from [this repository](https://github.com/acocos/scalar-adj/). (Cocos et al., 2018).
@@ -25,6 +25,11 @@ The `data` folder contains:
 + `coinco_data_500.pkl` is the dataset used for the evaluation described in the Supplementary Material. It contains 500 sentence pairs extracted from the CoInCo corpus, where lexical substitutes are proposed for all content words.
 The sentence pairs share a word and a set of possible substitutes along with the number of annotators who proposed the substitute. The variance ratio of these frequencies is taken to be an indication of whether all substitutes fit in the sentence equally well or not. If it is high, one substitute might be much more appropriate than the others. The task was to determine, for each sentence pair, which sentence is a better fit for ALL substitutes in the set.
 For the code used for this evaluation, please contact us.
+
+The `multilingual_scales` folder contains the MULTI-SCALE dataset, with translations of the DeMelo and Wilkinson datasets to French (fr), Spanish (es) and Greek (el). The folders follow the same structure as the English scales in the `data` folder. The file `all_translations.csv` contains the whole dataset including the original English scales.
+
+The `scal-rel` folder contains the SCAL-REL dataset (`scal-rel_dataset.csv`). Each line corresponds to one adjective in the dataset: `ADJECTIVE [TAB] CLASS [TAB] SET`. `CLASS` can be `SCALAR` or `RELATIONAL`. `SET` can be `train`,`dev` or `test`.
+
 
 ### Code
 
