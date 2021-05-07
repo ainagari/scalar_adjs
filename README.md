@@ -7,7 +7,7 @@ Aina Garí Soler and Marianna Apidianaki (2020). [BERT Knows Punta Cana is not j
 **(data ready, code coming soon)** Aina Garí Soler and Marianna Apidianaki (2021). [Scalar Adjective Identification and Multilingual Ranking](https://arxiv.org/abs/2105.01180). In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
 
 
-Part of this code and data were obtained or adapted from [this repository](https://github.com/acocos/scalar-adj/). (Cocos et al., 2018).
+Part of this code and data were obtained or adapted from [this repository](https://github.com/acocos/scalar-adj/) (Cocos et al., 2018).
 
 
 ### Data
@@ -16,7 +16,7 @@ The `data` folder contains:
 
 + The scales in the Demelo, Crowd and Wilkinson datasets.
 
-+ `*\_selected_scalar_sentences.pkl` files are pickled Python objects containing the 10 sentences used for each adjective scale. Each file corresponds to a different sentence pool (ukwac, ukwac-random, flickr).
++ `selected_scalar_sentences.pkl` files are pickled Python objects containing the 10 sentences used for each adjective scale. Each file corresponds to a different sentence pool (ukwac, ukwac-random, flickr).
 
 
 + `QA_instances_representations.pkl` files are pickled Python objects containing `bert-base-uncased` representations for the adjectives in the indirect QA dataset. The original dataset can be found [here](https://raw.githubusercontent.com/cgpotts/iqap/master/ACL2010/indirect-answers.combined.imdb-predictions.csv).
