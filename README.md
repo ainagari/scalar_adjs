@@ -77,13 +77,18 @@ Predictions on the QA task can be generated with:
 
 If you use the code in this repository, please cite our paper:
 ```
-@inproceedings{gari2020puntacana,
-    author    = {Gar\'i Soler, Aina and Apidianaki, Marianna},
-    title     = {{BERT Knows Punta Cana is not just \textit{beautiful}, it's \textit{gorgeous}: Ranking Scalar Adjectives with Contextualised Representations}},
-    booktitle   = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-    year      = {2020},
-    month     = {nov},
-    url       = {https://arxiv.org/abs/2010.02686}
+@inproceedings{gari-soler-apidianaki-2020-bert,
+    title = "{BERT} Knows Punta Cana is not just beautiful, it{'}s gorgeous: Ranking Scalar Adjectives with Contextualised Representations",
+    author = "Gar{\'\i} Soler, Aina  and
+      Apidianaki, Marianna",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.emnlp-main.598",
+    doi = "10.18653/v1/2020.emnlp-main.598",
+    pages = "7371--7385",  
 }
 ```
 
