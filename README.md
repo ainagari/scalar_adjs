@@ -84,7 +84,7 @@ Predictions on the QA task can be generated with:
 
 #### Obtaining sentences from ukwac
 
-`extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository but you can contact me
+`extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository. Feel free to contact me if you need it (see e-mail at the bottom).
 
 
 ### Citation
