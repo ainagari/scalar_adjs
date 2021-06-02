@@ -106,7 +106,7 @@ If you use the code in this repository, please cite our paper:
 }
 
 @inproceedings{gari-soler-apidianaki-2021-scalar,
-    title = "Scalar Adjective Identification and Multilingual Ranking",
+    title = {{Scalar Adjective Identification and Multilingual Ranking}},
     author = "Gar{\'\i} Soler, Aina  and
       Apidianaki, Marianna",
     booktitle = "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
@@ -123,6 +123,10 @@ If you use the code in this repository, please cite our paper:
 ### References
 
 Anne Cocos, Skyler Wharton, Ellie Pavlick, Marianna Apidianaki, and Chris Callison-Burch (2018). [Learning Scalar Adjective Intensity from Paraphrases](https://www.aclweb.org/anthology/D18-1202/). In Proceedings  of the 2018 Conference on Empirical Methods in Natural Language Processing, pages 1752–1762, Brussels, Belgium. Association for Computational Linguistics.
+
+Pedro Javier Ortiz Suárez, Benoît Sagot, and Laurent Romary. 2019. [Asynchronous pipeline for processing huge corpora on medium to low resource infrastructures](https://hal.inria.fr/hal-02148693). In Proceedings of the 7th Workshop on the Challenges in the Management of Large Corpora (CMLC-7), Cardiff, UK. Leibniz-Institut für Deutsche Sprache.
+
+
 
 ### Contact
 
