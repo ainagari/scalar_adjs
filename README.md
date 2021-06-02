@@ -41,6 +41,10 @@ Contextualized representations for (ukwac, ukwac-random, flickr, and oscar) sent
 
 You can change the language with `--language [en|es|fr|el]`, use a multilingual model with `--multilingual-uncased` or `--multilingual-cased`, and exclude the last bpe unit with `--exclude_last_bpe`.
 
+Representations for relational adjectives can be extracted running the following command, with the optional argument `--exclude_last_bpe`.
+
+`python scalrel_extract_representations.py`
+
 #### Making Ranking Predictions
 
 Once representations have been extracted, to generate predictions for the experiments in our first paper (Garí Soler & Apidianaki, 2020), you can run the following command. By default predictions are made using `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
@@ -89,7 +93,7 @@ Predictions on the QA task can be generated with:
 
 #### Classification on SCAL-REL
 
-Classification can be 
+Classification on the scal-rel dataset can be performed running `python scalrel_classification.py`. Before that, BERT representations need to be extracted for all adjectives (See "Extracting BERT Representations" above). A path to static embeddings (`--path_to_static`) needs to be provided.
 
 ### Citation
 
