@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     model_name = "bert-base-uncased"
     tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case=True)
-    filename = "relational_sentences.pkl"
+    filename = "scal-rel/relational_sentences.pkl"
     out_fn = "relational_ctxtembeds_" + bpe_str + ".pkl"
 
     data = pickle.load(open(filename, "rb"))
