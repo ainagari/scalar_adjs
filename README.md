@@ -4,7 +4,7 @@ Code for the papers:
 
 Aina Garí Soler and Marianna Apidianaki (2020). [BERT Knows Punta Cana is not just beautiful, it's gorgeous: Ranking Scalar Adjectives with Contextualised Representations](https://www.aclweb.org/anthology/2020.emnlp-main.598.pdf). In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), Nov 16-20.
 
-**(data ready, code coming soon)** Aina Garí Soler and Marianna Apidianaki (2021). [Scalar Adjective Identification and Multilingual Ranking](https://arxiv.org/abs/2105.01180). In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
+Aina Garí Soler and Marianna Apidianaki (2021). [Scalar Adjective Identification and Multilingual Ranking](https://arxiv.org/abs/2105.01180). In Proceedings of the 2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), Jun 6-11.
 
 
 Part of this code and data were obtained or adapted from [this repository](https://github.com/acocos/scalar-adj/) (Cocos et al., 2018).
@@ -26,39 +26,53 @@ The `data` folder contains:
 The sentence pairs share a word and a set of possible substitutes along with the number of annotators who proposed the substitute. The variance ratio of these frequencies is taken to be an indication of whether all substitutes fit in the sentence equally well or not. If it is high, one substitute might be much more appropriate than the others. The task was to determine, for each sentence pair, which sentence is a better fit for ALL substitutes in the set.
 For the code used for this evaluation, please contact us.
 
-The `multilingual_scales` folder contains the MULTI-SCALE dataset, with translations of the DeMelo and Wilkinson datasets to French (fr), Spanish (es) and Greek (el). The folders follow the same structure as the English scales in the `data` folder. The file `all_translations.csv` contains the whole dataset including the original English scales.
+The `multilingual_scales` folder contains the MULTI-SCALE dataset, with translations of the DeMelo and Wilkinson datasets to French (fr), Spanish (es) and Greek (el). The folders follow the same structure as the English scales in the `data` folder. The file `all_translations.csv` contains the whole dataset including the original English scales. The files `sentences_[LANG].pkl` contain the sentences used in our experiments for each of the languages in the dataset.
 
-The `scal-rel` folder contains the SCAL-REL dataset (`scal-rel_dataset.csv`). Each line corresponds to one adjective in the dataset: `ADJECTIVE [TAB] CLASS [TAB] SET`. `CLASS` can be `SCALAR` or `RELATIONAL`. `SET` can be `train`,`dev` or `test`.
+The `scal-rel` folder contains the SCAL-REL dataset (`scal-rel_dataset.csv`). Each line corresponds to one adjective in the dataset: `ADJECTIVE [TAB] CLASS [TAB] SET`. `CLASS` can be `SCALAR` or `RELATIONAL`. `SET` can be `train`,`dev` or `test`. The file `relational_sentences.pkl` contains the 10 sentences per adjective used in our experiments.
+
 
 
 ### Code
 
 #### Extracting BERT Representations
-Contextualized representations for (ukwac, ukwac-random, flickr) sentences can be generated with the following command. They will be stored in `data/`. 
+Contextualized representations for (ukwac, ukwac-random, flickr, and oscar) sentences can be generated with the following command. They will be stored in `--data_dir`. 
 
-`python extract_representations --sentences ukwac`
+`python extract_representations --data_dir data/ --sentences ukwac --language en`
+
+You can change the language with `--language [en|es|fr|el]`, use a multilingual model with `--multilingual-uncased` or `--multilingual-cased`, and exclude the last bpe unit with `--exclude_last_bpe`.
 
 #### Making Ranking Predictions
 
-This is the command to generate predictions once representations have been extracted. By default they are made with `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
+Once representations have been extracted, to generate predictions for the experiments in our first paper (Garí Soler & Apidianaki, 2020), you can run the following command. By default predictions are made using `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
 
-`python predict.py`
+`python predict_puntacana.py`
+
+For the predictions in our 2021 paper, you can run the following script. The differences with the experiments above mainly consist in additioOnce representations have been extracted, to generate predictions for the experiments in our first paper (Garí Soler & Apidianaki, 2020), you can run the following command. By default predictions are made using `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
+
+`python predict_puntacana.py`
+
+For the predictions in our 2021 paper, you can run the following script. The differences with the experiments above mainly consist in additional languages and the use of fasttext embeddings instead of word2vec.
+
+`python predict_multilingual.py --language fr --path_to_static [PATH TO STATIC EMBEDDINGS]`nal languages and the use of fasttext embeddings instead of word2vec.
+
+`python predict_multilingual.py --language fr --path_to_static [PATH TO STATIC EMBEDDINGS]`
 
 ##### FREQ predictions
 
-To generate frequency baseline (FREQ) predictions, you should have a file with frequencies and indicate its location with the flag `--freq_file`. 
+To generate frequency baseline (FREQ) predictions for English, you should have a file with frequencies and indicate its location with the flag `--english_freq_fn`. 
 It should be a zipped text file with this format:
 `word[TAB]frequency\n`
 
+The frequencies for the other languages, calculated from the [OSCAR corpus](https://oscar-corpus.com/) (Ortiz Suárez et al, 2019), are provided in a different format.
+
+
 ##### Static word embedding predictions
 
-To generate predictions made by static embeddings, the file `GoogleNews-vectors-negative300.magnitude` (which can be downloaded [here](https://github.com/plasticityai/magnitude)) should be in the `data/` directory. You will also need to install the magnitude library (see the link provided).
+To generate predictions made by static embeddings, you need to first download them from [this repository](https://github.com/plasticityai/magnitude). For word2vec, you need `GoogleNews-vectors-negative300.magnitude`. For Fasttext embeddings, `cc.[LANGUAGE].300.magnitude`. You will also need to install the magnitude library (see the link provided). When making predictions, you can indicate the path to where these files are with `--path_to_static`.
 
 #### Evaluating Adjective Ranking
 
-Once predictions are saved you can evaluate them with the `eval.py` script. By default results will be written to a new folder `results/`.
-
-`python eval.py`
+Once predictions are saved you can evaluate them with the `eval.py` script. You can run `python eval_puntacana.py` for the 2020 paper and `python eval_multilingual.py` By default results will be written to a new folder `results/` or `rmultilingual_results/`. See the optional arguments in the respective scripts for more details.
 
 
 #### Making indirect QA predictions & evaluating
@@ -89,6 +103,19 @@ If you use the code in this repository, please cite our paper:
     url = "https://www.aclweb.org/anthology/2020.emnlp-main.598",
     doi = "10.18653/v1/2020.emnlp-main.598",
     pages = "7371--7385",  
+}
+
+@inproceedings{gari-soler-apidianaki-2021-scalar,
+    title = "Scalar Adjective Identification and Multilingual Ranking",
+    author = "Gar{\'\i} Soler, Aina  and
+      Apidianaki, Marianna",
+    booktitle = "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+    month = jun,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2021.naacl-main.370",
+    pages = "4653--4660",   
 }
 ```
 
