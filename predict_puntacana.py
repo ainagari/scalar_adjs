@@ -3,7 +3,7 @@ from operator import itemgetter
 from collections import defaultdict
 from pymagnitude import *
 import argparse
-
+from predict import *
 
 def save_predicted_rankings(predicted_ranking_dict, args):
     if not os.path.isdir(args.output_dir):
