@@ -88,7 +88,7 @@ def extract_representations(infos, tokenizer, model_name):
                         reps_for_this_instance[l].append((w, hidden_states[l][0][i].cpu()))                        
             reps.append(reps_for_this_instance)            
 
-    return reps
+    return reps, model
 
 
 
@@ -217,7 +217,7 @@ if __name__ == '__main__':
                 infos.append(cinstance)
 
     #### EXTRACTING REPRESENTATIONS
-    reps = extract_representations(infos, tokenizer, model_name)
+    reps, model = extract_representations(infos, tokenizer, model_name)
 
     for rep, instance in zip(reps, infos):
         scale = instance["scale"]
@@ -229,7 +229,7 @@ if __name__ == '__main__':
                 if lemma not in ins2["representations"]:
            	       	ins2["representations"][lemma] = dict()
                 for l in rep:                    
-                    ins2['representations'][lemma][l] = aggregate_reps(rep[l])
+                    ins2['representations'][lemma][l] = aggregate_reps(rep[l], model.config.hidden_size)
 
 
     pickle.dump(data, open(out_fn, "wb"))
