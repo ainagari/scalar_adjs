@@ -88,7 +88,7 @@ Predictions on the QA task can be generated with:
 
 #### Obtaining sentences from ukwac
 
-`extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository. Feel free to contact me if you need it (see e-mail at the bottom).
+`extract_ukwac_scalar.py` was used to find sentences in the ukwac corpus containing the scalar adjectives. To use it you need to download the ukwac corpus and specify its location with the flag `--corpus_dir`. The code for filtering out sentences containing Hearst patterns is not included in this repository. Feel free to contact me if you need it (see e-mail at the bottom). Note that the output of this script is not ready to be used with `extract_representations.py`. You need to select the sentences that will be used and put them in a format like that of the `data/selected_scalar_sentences.pkl` files. More information/scripts on this soon.
 
 
 #### Classification on SCAL-REL
