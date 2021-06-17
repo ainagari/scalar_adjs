@@ -3,7 +3,7 @@ import torch
 import numpy as np
 import pickle
 import argparse
-from extract_representations import aggregate_reps, special_tokenization
+from extract_representations import aggregate_reps, special_tokenization, extract_representations
 
 def check_correct_token_mapping(bert_tokenized_sentence, positions, word):
     berttoken = ''
@@ -59,7 +59,7 @@ if __name__ == "__main__":
             infos.append(cinstance)
 
     #### EXTRACTING REPRESENTATIONS
-    reps = extract_representations(infos, tokenizer, model_name)
+    reps, model = extract_representations(infos, tokenizer, model_name)
 
     for rep, instance in zip(reps, infos):
         adj = instance["adj"]
