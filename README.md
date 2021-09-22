@@ -57,8 +57,6 @@ For the predictions in our 2021 paper, you can run the following script. The dif
 
 For the predictions in our 2021 paper, you can run the following script. The differences with the experiments above mainly consist in additional languages and the use of fasttext embeddings instead of word2vec.
 
-`python predict_multilingual.py --language fr --path_to_static [PATH TO STATIC EMBEDDINGS]`nal languages and the use of fasttext embeddings instead of word2vec.
-
 `python predict_multilingual.py --language fr --path_to_static [PATH TO STATIC EMBEDDINGS]`
 
 ##### FREQ predictions
