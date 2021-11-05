@@ -47,11 +47,7 @@ Representations for relational adjectives can be extracted running the following
 
 #### Making Ranking Predictions
 
-Once representations have been extracted, to generate predictions for the experiments in our first paper (Garí Soler & Apidianaki, 2020), you can run the following command. By default predictions are made using `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
-
-`python predict_puntacana.py`
-
-For the predictions in our 2021 paper, you can run the following script. The differences with the experiments above mainly consist in additioOnce representations have been extracted, to generate predictions for the experiments in our first paper (Garí Soler & Apidianaki, 2020), you can run the following command. By default predictions are made using `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available in the script for more details, and the specificities of the FREQ baseline and the static methods just below.
+Once representations have been extracted, to generate predictions for the experiments in our first paper (Garí Soler & Apidianaki, 2020), you can run the following command. By default predictions are made using `ukwac` sentences and are written to a new `predictions/` directory. Unless otherwise specified, the script will generate predictions for all methods in the paper (baselines & diffvecs). See the options available inside the script for more details. The specificities of the FREQ baseline and the static methods are described below.
 
 `python predict_puntacana.py`
 
