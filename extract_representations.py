@@ -60,6 +60,7 @@ def extract_representations(infos, tokenizer, model_name):
 
     config = config_class.from_pretrained(model_name, output_hidden_states=True)
     model = model_class.from_pretrained(model_name, config=config)
+    model.to(device)
 
     model.eval()
     with torch.no_grad():
@@ -98,20 +99,20 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_dir", default='data/', type=str, help="directory where sentences are stored and where representations will be saved")
     parser.add_argument("--language", default="en", type=str, help="Language of the sentences: en, es, el, fr.")
-    parser.add_argument("--multilingual-uncased", action="store_true", help="Whether we use multilingual BERT uncased. If no multilingual model is chosen, the monolingual BERT of the chosen language will be used.")
-    parser.add_argument("--multilingual-cased", action="store_true", help="Whether we use multilingual BERT cased. If no multilingual model is chosen, the monolingual BERT of the chosen language will be used.")
+    parser.add_argument("--multilingual_uncased", action="store_true", help="Whether we use multilingual BERT uncased. If no multilingual model is chosen, the monolingual BERT of the chosen language will be used.")
+    parser.add_argument("--multilingual_cased", action="store_true", help="Whether we use multilingual BERT cased. If no multilingual model is chosen, the monolingual BERT of the chosen language will be used.")
     parser.add_argument("--sentences", default='ukwac-random', type=str, help="set of sentences used for methods that require sentences. Can be 'ukwac', 'flickr', or 'ukwac-random'")
     parser.add_argument("--exclude_last_bpe", action="store_true", help="whether we exclude the last bpe of words when words are split into multiple wordpieces")
 
     args = parser.parse_args()
 
-    if args.multilingual-uncased and args.multilingual-cased:
+    if args.multilingual_uncased and args.multilingual_cased:
         sys.out("incompatible options")
         
 
-    if args.multilingual-uncased:
+    if args.multilingual_uncased:
         language_str = "multi-" +  args.language 
-    elif args.multilingual-cased:
+    elif args.multilingual_cased:
         language_str = "multicased-" + args.language
     else:
         language_str = args.language
@@ -123,7 +124,7 @@ if __name__ == '__main__':
         bpe_str = "exclude-last-bpes"
 
 
-    if args.language == "en" and not args.multilingual-uncased and not args.multilingual-cased:
+    if args.language == "en" and not args.multilingual_uncased and not args.multilingual_cased:
         model_name = "bert-base-uncased"
         tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case=True)
         in_fn = args.data_dir + args.sentences + "_selected_scalar_sentences.pkl"
@@ -135,7 +136,7 @@ if __name__ == '__main__':
         in_fn = args.data_dir + "sentences_" + args.language + ".pkl"
         
 
-        if not args.multilingual-uncased and not args.multilingual-cased:
+        if not args.multilingual_uncased and not args.multilingual_cased:
             if args.language == "el":
                 model_name = "nlpaueb/bert-base-greek-uncased-v1"
                 tokenizer = AutoTokenizer.from_pretrained(model_name, do_lower_case=True)
@@ -147,14 +148,14 @@ if __name__ == '__main__':
                 tokenizer = FlaubertTokenizer.from_pretrained(model_name, do_lower_case=True)      
 
     
-    out_fn = args.data_dir + "scalar_embeddings_" + language_str + "_" + bpe_str + "_" args.sentences + ".pkl"        
+    out_fn = args.data_dir + "scalar_embeddings_" + language_str + "_" + bpe_str + "_" + args.sentences + ".pkl"        
     
         
-    if args.multilingual-uncased:
+    if args.multilingual_uncased:
         model_name = "bert-base-multilingual-uncased"
         tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case=True)
 
-    elif args.multilingual-cased:
+    elif args.multilingual_cased:
         model_name = "bert-base-multilingual-cased"
         tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case=False)
 
@@ -233,11 +234,3 @@ if __name__ == '__main__':
 
 
     pickle.dump(data, open(out_fn, "wb"))
-
-
-
-
-
-
-
-
