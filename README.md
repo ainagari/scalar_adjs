@@ -132,4 +132,4 @@ Pedro Javier Ortiz Suárez, Benoît Sagot, and Laurent Romary. 2019. [Asynchrono
 
 ### Contact
 
-For any questions or requests feel free to contact me: aina dot gari at limsi dot fr
+For any questions or requests feel free to [contact me](https://ainagari.github.io/menu/contact.html)
